@@ -5,15 +5,12 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require ('./swagger.json')
 
 
-
-// TO include passportjs 
-
-
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 
 const index = require("./routes/index");
 const cocktailsRouter = require("./routes/cocktailsRouter");
+const userRouter = require("./routes/userRouter")
 
 
 mongoose.connect("mongodb://localhost/cocktails_local");
@@ -31,6 +28,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/", index);
 app.use("/cocktails", cocktailsRouter);
-
+app.use("/users" , userRouter)
 
 module.exports = app;
