@@ -37,7 +37,7 @@
         }
       },
       "post": {
-        "summary": "Create a resource",
+        "summary": "Create a new cocktail",
         "tags": [
           "resource1"
         ],
@@ -52,8 +52,8 @@
       }
     },
     "/resource1/{id}": {
-      "get": {
-        "summary": "Info for a specific resource",
+      "delete": {
+        "summary": "Remove a specific resource",
         "tags": [
           "resource1"
         ],

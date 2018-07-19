@@ -1,7 +1,7 @@
 const request = require("supertest");
 const express = require("express");
 const mongoose = require("mongoose")
-const cocktailModels = require('../models/cocktail')
+const Cocktail = require('../models/cocktail')
 const app = require("../app");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const mongod = new MongoMemoryServer();
@@ -9,11 +9,11 @@ const mongod = new MongoMemoryServer();
 
 
 async function addFakeCocktail() {
-  const cocktail1 = {
+  const cocktail1 = new Cocktail ({
     name: "yy",
     description: "nice! nice!",
     ingredients: ["dda", 1000]
-  };
+  });
   await cocktail1.save();
 }
 
@@ -61,8 +61,8 @@ test("POST /", async () => {
     .send(cocktail2)
     .set("Authorization", "Bearer " + jwtTokenUser1);
 
-  const cocktailModel = await cocktailModels.find();
+  const cocktailModel = await Cocktail.find();
 
   expect(response.status).toEqual(200);
-  expect(cocktailModel.length).toBe(2);
+  expect(cocktailModel.length).toBe(3);
 });

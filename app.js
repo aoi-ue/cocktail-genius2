@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const express = require("express");
 
 const swaggerUi = require("swagger-ui-express");
@@ -11,13 +10,6 @@ const index = require("./routes/index");
 const cocktailsRouter = require("./routes/cocktailsRouter");
 const userRouter = require("./routes/userRouter")
 
-
-mongoose.connect("mongodb://localhost/cocktails_local");
-const db = mongoose.connection;
-db.on("error", error => {
-  console.error("connection error:", error);
-});
-
 const app = express();
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -29,7 +21,6 @@ app.use("/", index);
 app.use("/cocktails", cocktailsRouter);
 app.use("/users" , userRouter)
 
-// mongoose.disconnect(); 
-// 
+
 
 module.exports = app;
