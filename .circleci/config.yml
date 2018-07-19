@@ -18,9 +18,19 @@ jobs:
       - run: # run tests
           name: Run Test
           command: npm test
+    deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: git push https://heroku:262c8d03-0c82-444c-9044-d62d87c1973f@git.heroku.com/cocktail-genius2.git master       
 workflows:
   version: 2
   build-and-deploy:
     jobs:
       - build
-      
+      - deploy:
+        requires:
+          - build
