@@ -10,7 +10,7 @@
     }
   ],
   "paths": {
-    "/resource1": {
+    "/cocktails": {
       "get": {
         "summary": "List all cocktails",
         "tags": [
