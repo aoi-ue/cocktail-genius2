@@ -7,7 +7,7 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-  res.json({ message: 'Knock yourself but dont drink and drive!' });   
+  res.json({ message: 'Knock yourself off but dont drink and drive!' });   
 });
 
 router.use('/api', router);

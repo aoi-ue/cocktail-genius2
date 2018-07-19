@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://cocktail-genius2.com"
+      "url": "https://cocktail-genius2.herokuapp.com/"
     }
   ],
   "paths": {
@@ -123,32 +123,6 @@
                   "example": {
                     "id": 5,
                     "name": "updated name"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/resource2": {
-      "get": {
-        "summary": "List all resource1",
-        "tags": [
-          "resource2"
-        ],
-        "responses": {
-          "200": {
-            "description": "List of resource objects",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "example": {
-                      "id": 6,
-                      "special": "a different kind of resource"
-                    }
                   }
                 }
               }

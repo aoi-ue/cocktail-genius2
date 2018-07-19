@@ -4,7 +4,6 @@ const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require ('./swagger.json')
 
-
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 
@@ -29,5 +28,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", index);
 app.use("/cocktails", cocktailsRouter);
 app.use("/users" , userRouter)
+
+// mongoose.disconnect(); 
+// 
 
 module.exports = app;

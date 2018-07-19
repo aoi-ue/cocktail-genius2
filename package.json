@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "mongodb-memory-server": "^1.9.0",
     "mongoose": "^5.2.4",
     "mongoose-seed": "^0.5.0",
     "mongoose-unique-validator": "^2.0.1",
