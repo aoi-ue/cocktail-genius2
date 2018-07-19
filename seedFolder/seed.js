@@ -2,7 +2,7 @@ var seeder = require("mongoose-seed");
 
 // Connect to MongoDB via Mongoose
 seeder.connect(
-  "mongodb://localhost/cocktails_local",
+  process.env.MONGODB_URI || "mongodb://localhost/cocktails_local",
   function() {
     // Load Mongoose models
     seeder.loadModels(["models/cocktail.js"]);

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "start:dev": "npx nodemon server.js",
-    "test": "jest"
+    "test": "jest", 
+    "seed": "node seedFolder/seed.js"
   },
   "keywords": [],
   "author": "",
