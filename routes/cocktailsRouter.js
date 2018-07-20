@@ -32,7 +32,6 @@ router.put(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
-    passport.authenticate("jwt", { session: false });
     const update = await Cocktail.findByIdAndUpdate(req.params.id, req.body);
     res.status(204).json();
   }
@@ -42,7 +41,6 @@ router.delete(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
-    passport.authenticate("jwt", { session: false });
     const update = await Cocktail.findByIdAndDelete(req.params.id, req.body);
     res.status(204).json();
   }
