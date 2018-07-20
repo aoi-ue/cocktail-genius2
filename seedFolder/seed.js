@@ -45,6 +45,18 @@ var data = [
          name:"tomato juice", 
          quantityInL: 0.5 
        }]
+       },
+       {
+        name: 'white russian',
+        description: 'blah bla',
+        ingredients: [{
+          name:"vodka", 
+          quantityInL: 0.01 
+        },
+        {
+         name:"coffee", 
+         quantityInL: 0.5 
+       }]
        }
     ]
   }
