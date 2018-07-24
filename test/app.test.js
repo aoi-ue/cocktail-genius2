@@ -1,11 +1,9 @@
 const request = require("supertest");
-const express = require("express");
 const mongoose = require("mongoose");
 const Cocktail = require("../models/cocktail");
 const app = require("../app");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const mongod = new MongoMemoryServer();
-// const app = express();
 
 async function addFakeCocktail() {
   const cocktail1 = new Cocktail({
