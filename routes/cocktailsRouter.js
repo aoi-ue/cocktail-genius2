@@ -13,11 +13,10 @@ publicRoute.get("/", async (req, res, next) => {
 
 publicRoute.get("/search", async (req, res) => {
   var cocktails = await Cocktail.find({ name: req.query.name });
-  res.json(cocktails);
-});
 
-publicRoute.use(function(req, res, next) {
-  res.status(404).send({ Message: "Cocktail Unavailable!" });
+  if (cocktails.length === 0)
+    res.status(404).send({ Message: "Cocktail Unavailable!" });
+  else res.json(cocktails);
 });
 
 restrictedRoute.post("/", async (req, res) => {
@@ -40,6 +39,6 @@ restrictedRoute.delete("/:id", async (req, res, next) => {
 });
 
 module.exports = app => {
-  app.use("/cocktails", authenticateUser, restrictedRoute);
   app.use("/cocktails", publicRoute);
+  app.use("/cocktails", authenticateUser, restrictedRoute);
 };

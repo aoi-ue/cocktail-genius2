@@ -1,14 +1,14 @@
 const request = require("supertest");
 const express = require("express");
-const mongoose = require("mongoose")
-const Cocktail = require('../models/cocktail')
+const mongoose = require("mongoose");
+const Cocktail = require("../models/cocktail");
 const app = require("../app");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const mongod = new MongoMemoryServer();
 // const app = express();
 
 async function addFakeCocktail() {
-  const cocktail1 = new Cocktail ({
+  const cocktail1 = new Cocktail({
     name: "yy",
     description: "nice! nice!",
     ingredients: ["dda", 1000]
@@ -36,7 +36,7 @@ afterAll(() => {
 });
 
 beforeEach(async () => {
-  // mongoose.connection.db.dropDatabase();
+  await Cocktail.remove();
   await addFakeCocktail();
 });
 
@@ -63,5 +63,29 @@ test("POST /", async () => {
   const cocktailModel = await Cocktail.find();
 
   expect(response.status).toEqual(200);
-  expect(cocktailModel.length).toBe(3);
+  expect(cocktailModel.length).toBe(2);
+});
+
+describe("GET /cocktails/search?name=<string>", () => {
+  test("should return cocktail of yy", async () => {
+    const response = await request(app)
+      .get("/cocktails/search")
+      .query({
+        name: "yy"
+      });
+
+    expect(response.status).toEqual(200);
+    expect(response.body.length).toBe(1);
+  });
+
+  test("should return status 404 and message 'Cocktail Unavailable'", async () => {
+    const response = await request(app)
+      .get("/cocktails/search")
+      .query({
+        name: ""
+      });
+
+    expect(response.status).toEqual(404);
+    expect(response.body).toMatchObject({ Message: "Cocktail Unavailable!" });
+  });
 });
