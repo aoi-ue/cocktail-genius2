@@ -38,4 +38,6 @@ router.use(function(req, res, next) {
   res.status(404).send({ Message: "Cocktail Unavailable!" });
 });
 
-module.exports = router;
+module.exports = app => {
+  app.use("/cocktails", router);
+};
