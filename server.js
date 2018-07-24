@@ -1,7 +1,9 @@
 const app = require("./app");
-const mongoose = require ('mongoose')
+const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cocktails_local");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/cocktails_local"
+);
 const db = mongoose.connection;
 db.on("error", error => {
   console.error("connection error:", error);
